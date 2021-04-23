@@ -1,0 +1,129 @@
+body {
+	margin: 1%;
+	padding: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #666;
+	background: #f2f2f2; 
+	font-size: 20px;
+	line-height: 0.5em;
+}
+
+h1 {
+  color: #4CAF50;
+  font-weight: normal;
+  font-size: 30px;
+  font-family: Arial;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+p {
+	margin: 0 0 1.5em 0;
+}
+
+body {
+    background-image: url("https://www.mediformplus.com/wp-content/uploads/2019/10/banner-Ansiedad.png");
+    background-attachment: fixed ;
+    background-size: contain;
+  }
+
+  .centrarSesion{
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+  
+#main-header {
+	background: #333;
+	color: white;
+	height: 80px;
+}	
+	#main-header a {
+		color: white;
+	}
+
+/*
+ * Logo
+ */
+#logo-header {
+	float: left;
+	padding: 10px 0 0 20px;
+	text-decoration: none;
+}
+
+	#logo-header:hover {
+		color: #0b76a6;
+	}
+	
+	#logo-header .site-name {
+		display: block;
+		font-weight: 700;
+		font-size: 1.2em;
+    text-transform:uppercase;
+	}
+	#logoansitest {
+    float: right;
+    padding: 10px 0 0 20px;
+    text-decoration: none;
+  }
+  #logoansitest .site-name {
+    display: block;
+    font-weight: 700;
+    font-size: 1.2em;
+  }
+	
+    /* Con estos estilos aplicaremos diseño al contenido:*/
+	
+    #main-content {
+        background: white;
+        width: 90%;
+        max-width: 800px;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+    }
+    
+        #main-content header,
+        #main-content .content {
+            padding: 40px;
+        }
+  
+    
+    #main-footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 120px;
+        margin-top: 40px;
+    }
+        #main-footer p {
+            margin: 0;
+        }
+        
+        #main-footer a {
+            color: white;
+        }
+
+
+
+
+
+
+.btn-group button {
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 20%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}

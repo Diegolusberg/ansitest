@@ -1,6 +1,7 @@
 <?php
 
-require 'test.view.php';
+
+require 'vista/test.view.php';
 
 
 ?>
