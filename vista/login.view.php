@@ -25,7 +25,7 @@
                           <a class="sign-up" href="registrarusuario.php">Registrarse</a>
                           <br>
                       </div>
-                      <h6 class="no-access">No puede acceder a su cuenta?</h6>
+                      <!--<h6 class="no-access">No puede acceder a su cuenta?</h6>-->
                     </div>
           </form>
                       <div class="centerdiv">
@@ -34,6 +34,6 @@
                       </div>
     </div>
 
-<div class="error-page">
+<!--<div class="error-page">
   <div class="try-again">Error: Intentelo de nuevo?</div>
-</div>
+</div>-->

@@ -27,19 +27,20 @@
 
 	<label>Sexo</label>
 	<select name="sexo">
-    <option value="1" selected>Masculino</option>
+    <option value="1">Masculino</option>
     <option value="2">Femenino</option> <!-- Opción por defecto -->
   	</select>
 	<label>Empresa: </label>
     <select name="empresa">
         <?php
+
         foreach ($empresas as $empresa) {
           echo '<option value='.$empresa['id_empresa'].'>'. $empresa['nombre']; }'</option>'
         ?>
     </select>
 	  
 	<label for="usuario">Usuario</label>
-	<input type ="text" name="usuario" id="usuario" placeholder="Usuario" value="<?php echo $datos[5];?>"/>
+	<input type ="text" name="usuario" id="usuario" placeholder="Usuario" value="<?php echo $datos[5];?>" readonly/>
 
 	<label for="password">Contraseña</label>
 	<input type="password" name="password" id="password" placeholder="Password" value="<?php echo $datos[6];?>" require/>

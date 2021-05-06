@@ -24,7 +24,7 @@ if($resultado!=null){
 		}                                            
 	$preguntas = explode(";", $pregunta);	
 	$respuestas = explode(";", $respuesta);
-	var_dump($preguntas);
+	//var_dump($preguntas);
 }
 
 require 'vista/historial.view.php';

@@ -18,7 +18,7 @@
   <button style="margin: 10px" onclick="location.href='editarusuario.php'">Editar Perfil</button>
   <button style="margin: 10px" onclick="location.href='historial.php'">Historial</button>
   <button style="margin: 10px" onclick="location.href='test.php'">Test</button>
-  <button style="margin: 10px" onclick="location.href='teorias.php'">Más sobre la ansiedad</button>
+  <button style="margin: 10px" onclick="location.href='https://es.wikipedia.org/wiki/Ansiedad'">Más sobre la ansiedad</button>
 </div>
 
 </html>

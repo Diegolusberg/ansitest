@@ -1,4 +1,7 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 
 
 // Comprobamos si ya han sido enviado los datos
@@ -24,15 +27,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo "Error:" . $e->getMessage();
 		}
 
-		$statement = $conexion->prepare('SELECT * FROM empresas WHERE nombre = :nombre LIMIT 1');
-		$statement->execute(array(':nombre' => $nombre));
+		$statement = $conexion->prepare('SELECT * FROM empresas WHERE nombre = :nombre OR ruc=:ruc');
+		$statement->execute(array(':nombre' => $nombre,
+								  ':ruc'=>$ruc
+									));
 
 		// El metodo fetch nos va a devolver el resultado o false en caso de que no haya resultado.
-		$resultado = $statement->fetch();
+		$resultado = $statement->fetchAll();
 
 		// Si resultado es diferente a false entonces significa que ya existe la empresa.
 		if ($resultado != false) {
-			$errores .= '<li>Ya existe una empresa con ese nombre</li>';
+			$errores .= '<li>Ya existe una empresa con ese nombre o ruc</li>';
 		}
 	}
 

@@ -21,7 +21,7 @@
 		</select>
 
 		<label for="codigo">Codigo</label>
-		<input type ="text" name="codigo" id="codigo" placeholder="Codigo de acceso"/>
+		<input type ="password" name="codigo" id="codigo" placeholder="Codigo de acceso"/>
 
 	
 	<input type="submit" name="informe" value="Informe"/>
@@ -34,11 +34,14 @@
 					</div>
 		<?php endif; ?>
 </form>
+
+
+<?php if($_SERVER['REQUEST_METHOD'] == 'POST' AND $datosFuncionarios!=null){?>
 <h2>Historial de Usuarios</h2>
 <div class="historial">
     <div class="pregunta"> <?php    
                                     if($datosFuncionarios==null){
-                                      echo "<h1>Aún no ha realizado el test</h1>";
+                                      echo "<h1>No se encuentran test</h1>";
                                     }else{
 										if($datosFuncionarios!=null){
 											$indice=0;
@@ -86,13 +89,10 @@
 
 
                             ?>
-                                                    
-
- 
-
- 
+                                                
     </div>
 </div>
+<?php } ?>
 
 </body>
 </html>

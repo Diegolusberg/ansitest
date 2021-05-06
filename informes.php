@@ -2,6 +2,7 @@
 include 'funciones.php';
 
 $datosempresas= traerempresas();
+$datosFuncionarios=null;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Validamos que los datos hayan sido rellenados
@@ -34,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 
 	}
-
+	
 	// Comprobamos si hay errores, sino entonces agregamos el usuario y redirigimos.
 	if ($errores == '') {
 		
@@ -52,7 +53,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		// Despues de registrar al usuario redirigimos para que inicie sesion.
 	}
-
 }
 
 
