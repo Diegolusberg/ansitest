@@ -11,7 +11,7 @@ try {
 	echo "Error:" . $e->getMessage();
 }
 
-$statement = $conexion->prepare('SELECT * FROM diagnostico where id_usuario=:id');
+$statement = $conexion->prepare('SELECT * FROM diagnostico where id_empresa=:id');
 $statement->execute(array(':id'=> $datos[0]));
 $resultado = $statement->fetchAll();
 
@@ -20,11 +20,11 @@ if($resultado!=null){
 	foreach($resultado as $valores){
 
 		list(,,$pregunta, $respuesta) = $valores;//Trae valores y guarda en forma de string para hacer el explode
-									 			//hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
-		}                                            
-	$preguntas = explode(";", $pregunta);	
+	}                                            //hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
+	   
+	$preguntas = explode(";", $pregunta);
 	$respuestas = explode(";", $respuesta);
-	var_dump($preguntas);
+	//var_dump($resultado);
 }
 
 require 'vista/historial.view.php';

@@ -3,7 +3,7 @@
 <h1><?php echo $_SESSION['usuario'] ?></h1>
 
 
-<h2>Historial de test</h2>
+<h2>Historial de Usuarios</h2>
 <div class="historial">
     <div class="pregunta"> <?php    
                                     if($resultado==null){

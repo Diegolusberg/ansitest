@@ -1,14 +1,14 @@
 <?php session_start();
 include 'funciones.php';
 
+
 // Comprobamos si ya tiene una sesion
 # Si ya tiene una sesion redirigimos al contenido, para que no pueda volver a registrar un usuario.
-if (isset($_SESSION['usuario'])) {
-	header('Location: principal.php');
-	die();
-}
+
 
 $empresas= traerempresas();
+
+$datos= datosUsuarioTotal();
 
 
 // Comprobamos si ya han sido enviado los datos
@@ -48,15 +48,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo "Error:" . $e->getMessage();
 		}
 
-		$statement = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1');
+		$statement = $conexion->prepare('SELECT usuario FROM usuarios WHERE usuario = :usuario LIMIT 1');
 		$statement->execute(array(':usuario' => $usuario));
 
 		// El metodo fetch nos va a devolver el resultado o false en caso de que no haya resultado.
 		$resultado = $statement->fetch();
-
+		//var_dump($resultado);
 		// Si resultado es diferente a false entonces significa que ya existe el usuario.
 		if ($resultado != false) {
+			if($resultado[0]!=$_SESSION['usuario']){
 			$errores .= '<li>El nombre de usuario ya existe</li>';
+			}
 		}
 
 		// Hasheamos nuestra contraseña para protegerla un poco.
@@ -74,7 +76,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Comprobamos si hay errores, sino entonces agregamos el usuario y redirigimos.
 	if ($errores == '') {
 		$statement = $conexion->prepare('INSERT INTO usuarios (id_usuario,nombres,apellidos,edad,sexo,usuario, contrasena,id_empresa) 
-        VALUES (:id_usuario, :nombres, :apellidos, :edad, :sexo, :usuario, :pass, :id_empresa)');
+        VALUES (:id_usuario, :nombres, :apellidos, :edad, :sexo, :usuario, :pass, :id_empresa)
+		ON DUPLICATE KEY UPDATE id_usuario=:id_usuario, nombres=:nombres, apellidos=:apellidos, edad=:edad, sexo=:sexo, usuario=:usuario, contrasena=:pass, id_empresa=:id_empresa');
 		$statement->execute(array(
                 ':id_usuario'=>$idusuario,
                 ':nombres'=>$nombres,
@@ -87,13 +90,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			));
 
 		// Despues de registrar al usuario redirigimos para que inicie sesion.
-		header('Location: login.php');
+		header('Location: principal.php');
 	}
 
 
 }
 
 
-require 'vista/registrarusuario.view.php';
+require 'vista/editarusuario.view.php';
 
 ?>

@@ -4,7 +4,7 @@
 # Si ya tiene una sesion redirigimos al contenido, para que no pueda acceder al formulario
 if (isset($_SESSION['usuario'])) {
 	header('Location: principal.php');
-	$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
+	//$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
 	die();
 }
 
