@@ -37,13 +37,20 @@
 
 
 </body>
-<?php if($_SERVER['REQUEST_METHOD'] == 'POST' AND $datosFuncionarios!=null){?>
+<?php 
+
+if($datosFuncionarios==null AND $_SERVER['REQUEST_METHOD'] == 'POST'){
+	echo "<h1>No se encuentran test</h1>";}
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' AND $datosFuncionarios!=null){
+
+?>
+
+
 <h2>Historial de Usuarios</h2>
 <div class="historial">
     <div class="pregunta"> <?php    
-                                    if($datosFuncionarios==null){
-                                      echo "<h1>No se encuentran test</h1>";
-                                    }else{
+                                    
 										if($datosFuncionarios!=null){
 											$indice=0;
 											//$contador=0;
@@ -94,7 +101,7 @@
 												
 												
                                           	
-									}
+									
 
 
                             ?>
