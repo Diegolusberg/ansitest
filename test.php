@@ -1,13 +1,17 @@
-<?php 
+<?php session_start();
 include 'funciones.php';
-session_start();
-$datos = datosUsuario();
-$post=0;
-try {
-	$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-} catch (PDOException $e) {
-	echo "Error:" . $e->getMessage();
+include 'admin/config.php';
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . RUTA);
+	//$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
 }
+
+$datos = datosUsuario($bd_config);
+$post=0;
+
+
+		$conexion = conexion($bd_config);
 		$statement = $conexion->prepare('SELECT descripcion FROM preguntas order by id_pregunta');
 		$statement->execute();
 		//$preguntasV= $statement->fetchAll();
@@ -40,11 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if (count($respuestasV) < 12) {
 				$errores = 'Por favor rellena todos los datos';
 			} else {
-					try {
-						$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-					} catch (PDOException $e) {
-						echo "Error:" . $e->getMessage();
-					}
+					$conexion = conexion($bd_config);
 					$statement = $conexion->prepare('SELECT id_pregunta FROM preguntas order by id_pregunta');
 					$statement->execute();
 					//$preguntasV= $statement->fetchAll();
@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$var= ">=15";
 				}
 				
-				$reglas= traerReglas($var);
+				$reglas= traerReglas($var, $bd_config);
 				//var_dump($reglas);
 				$id_regla=$reglas[0]["id_regla"];
 
@@ -83,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 						));
 					
 				//header('Location: resultadostest.php');
-						$diagnostico= traerDiagnostico($datos[0]);
+						$diagnostico= traerDiagnostico($datos[0], $bd_config);
 			}
 	}else{
 		$errores = 'Debe completar para obtener resultados';

@@ -1,5 +1,6 @@
 <?php session_start();
 include 'funciones.php';
+include 'admin/config.php';
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
@@ -11,7 +12,7 @@ if (isset($_SESSION['usuario'])) {
 	die();
 }
 
-$empresas= traerempresas();
+$empresas= traerempresas($bd_config);
 
 
 // Comprobamos si ya han sido enviado los datos
@@ -45,11 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 
 		// Comprobamos que el usuario no exista ya.
-		try {
-			$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-		} catch (PDOException $e) {
-			echo "Error:" . $e->getMessage();
-		}
+		$conexion = conexion($bd_config);
 
 		$statement = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = :usuario OR ci = :ci LIMIT 1');
 		$statement->execute(array(':usuario' => $usuario,

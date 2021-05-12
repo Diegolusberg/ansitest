@@ -1,4 +1,6 @@
-<?php
+<?php 
+include 'funciones.php';
+include 'admin/config.php';
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
@@ -21,11 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errores = '<li>Por favor rellena todos los datos correctamente</li>';
 	} else {
 
-		try {
-			$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-		} catch (PDOException $e) {
-			echo "Error:" . $e->getMessage();
-		}
+		$conexion= conexion($bd_config);
 
 		$statement = $conexion->prepare('SELECT * FROM empresas WHERE nombre = :nombre OR ruc=:ruc');
 		$statement->execute(array(':nombre' => $nombre,

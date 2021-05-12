@@ -2,6 +2,7 @@
 
 
 <h1>Ansitest</h1>
+<h3>Tenga en cuenta para cada pregunta estos 3 aspectos: su gravedad, su frecuencia de presentación y la incapacidad o disfunción que produce.</h3>
 
 <?php if($post==0){?>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="test">
@@ -41,7 +42,11 @@
 
 
   <div class="pregresp">
-    <div class="pregunta" name="pregunta3">3. MIEDOS: ¿ Sientes muiedo a la oscuridad,a los desconocidos,a quedarse solo, a los animales. a, la circulación o a la muchedumbre cuando te encuentras en un entorno de trabajo?<br />
+    <div class="pregunta" name="pregunta3">3. <?php
+
+                                              traerPreguntas(2,$preguntasV);
+
+                                              ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[3]" value="0" /> Ausente<br />
@@ -54,7 +59,11 @@
 
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta4">4. INSOMNIO: ¿ Sientes Dificultades de conciliación, Sueño interrumpido, Sueño no satisfactorio con cansancio al despertar,Sueños penosos, Pesadillas o Terrores nocturnos a menudo?<br />
+    <div class="pregunta" name="pregunta4">4. <?php
+
+                                              traerPreguntas(3,$preguntasV);
+
+                                              ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[4]" value="0" /> Ausente<br />
@@ -66,7 +75,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta5">5. FUNCIONES INTELECTUALES (COGNITIVAS): ¿Tienes Dificultad de concentración cuando realizas tareas o Mala memoria para recordar asuntos importantes?<br />
+    <div class="pregunta" name="pregunta5">5. <?php
+
+                                              traerPreguntas(4,$preguntasV);
+
+                                              ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[5]" value="0" /> Ausente<br />
@@ -78,7 +91,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta6">6. HUMOR DEPRESIVO: ¿Tienes Pérdida de interés por el trabajo, No disfrutas del tiempo libre, Depresión, Insomnio de madrugada o Variaciones anímicas a lo largo del día?<br />
+    <div class="pregunta" name="pregunta6">6. <?php
+
+                                              traerPreguntas(5,$preguntasV);
+
+                                              ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[6]" value="0" /> Ausente<br />
@@ -90,7 +107,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta7">7. SÍNTOMAS SOMÁTICOS MUSCULARES: ¿Sientes Dolores musculares, Rigidez o sacudidas musculares, Sacudidas clónicas, Rechinar de dientes o Voz quebrada?<br />
+    <div class="pregunta" name="pregunta7">7. <?php
+
+                                              traerPreguntas(6,$preguntasV);
+
+                                              ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[7]" value="0" /> Ausente<br />
@@ -102,7 +123,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta8">8. . SINTOMAS SOMÁTICOS GENERALES: ¿Tienes Zumbido de oídos. Visión borrosa. Oleadas de calor o frio. Sensación de debilidad. Parestesia (pinchazos u hormigueos)?<br />
+    <div class="pregunta" name="pregunta8">8. <?php
+
+                                              traerPreguntas(7,$preguntasV);
+
+                                              ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[8]" value="0" /> Ausente<br />
@@ -114,7 +139,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta9">9. SINTOMAS CARDIOVASCULARES:¿Tienes Taquicardia. Palpitaciones. Dolor torácico, Sensación pulsátil en vasos, Sensaciones de baja presión o desmayos. Extrasístoles (arritmias cardiacas benignas)?<br />
+    <div class="pregunta" name="pregunta9">9. <?php
+
+                                              traerPreguntas(8,$preguntasV);
+
+                                              ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[9]" value="0" /> Ausente<br />
@@ -126,7 +155,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta10">10. SINTOMAS RESPIRATORIOS:¿Sientes Opresión pretorácica. Constricción precordial. Sensación de ahogo falta de aire. Suspiros. Disnea (dificultad para respirar) cuando te dan responsabilidades?.<br />
+    <div class="pregunta" name="pregunta10">10. <?php
+
+                                                traerPreguntas(9,$preguntasV);
+
+                                                ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[10]" value="0" /> Ausente<br />
@@ -138,7 +171,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta11">11. SINTOMAS GASTROINTESTINALES:¿Tienes Dificultades evacuatorias,Gases, dolores o ardor antes o después de comer, hinchazón abdominal, náuseas, vómitos, Cólicos(espasmos) abdominales, diarrea. pérdida de peso. Estreñimiento constantemente?<br />
+    <div class="pregunta" name="pregunta11">11. <?php
+
+                                                traerPreguntas(10,$preguntasV);
+
+                                                ?><br />
     </div>
         <div class="respuestas">
           <input type="radio" name="resp[11]" value="0" /> Ausente<br />
@@ -150,8 +187,11 @@
     </div>
 
     <div class="pregresp">
-    <div class="pregunta" name="pregunta12">12. SÍNTOMAS GENITOURINARIOS: ¿Tienes micciones frecuentes, micción imperiosa, amenorrea (falta del periodo menstrual) de manera habitual?<br />
-    </div>
+    <div class="pregunta" name="pregunta12">12. <?php
+
+                                                traerPreguntas(11,$preguntasV);
+
+                                                ?><br />
         <div class="respuestas">
           <input type="radio" name="resp[12]" value="0" /> Ausente<br />
           <input type="radio" name="resp[12]" value="1" /> Intensidad Ligera <br />
@@ -218,7 +258,7 @@
  }
 
  ?> 
-  <h2><?php echo "Su puntaje es de ".$suma." , se detecta posible ". $reglas[0]["resultado"]."<br>";?></h2>
+  <h2><?php echo "Su puntaje es de ".$suma." , Diagnóstico probable: ". $reglas[0]["resultado"]."<br>";?></h2>
                     <div>
                     <?php
 										echo '<span style="color:green; font-size:25px;">'."Puntuacion menor a 6, no se detectan niveles de ansiedad.<br>".'</span>';

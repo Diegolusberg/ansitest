@@ -1,7 +1,18 @@
 <?php
-function datosUsuario(){
+# Return: la conexion o false si hubo un problema.
+function conexion($bd_config){
+	try {
+	    $conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['basedatos'], $bd_config['usuario'], $bd_config['pass']);
+
+		return $conexion;
+
+	} catch (PDOException $e) {
+		return false;		
+	}
+}
+function datosUsuario($bd_config){
     try {
-        $conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
+        $conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['basedatos'], $bd_config['usuario'], $bd_config['pass']);
     } catch (PDOException $e) {
         echo "Error:" . $e->getMessage();
     }
@@ -12,9 +23,9 @@ function datosUsuario(){
     return $resultado;
 }
 
-function datosUsuarioTotal(){
+function datosUsuarioTotal($bd_config){
     try {
-        $conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
+        $conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['basedatos'], $bd_config['usuario'], $bd_config['pass']);
     } catch (PDOException $e) {
         echo "Error:" . $e->getMessage();
     }
@@ -26,9 +37,9 @@ function datosUsuarioTotal(){
     return $resultado;
    
 }
-function traerempresas(){
+function traerempresas($bd_config){
     try {
-        $conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
+        $conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['basedatos'], $bd_config['usuario'], $bd_config['pass']);
     } catch (PDOException $e) {
         echo "Error:" . $e->getMessage();
     }
@@ -39,9 +50,9 @@ function traerempresas(){
     return $resultado;
 }
 
-function traerReglas(String $var){
+function traerReglas(String $var, $bd_config){
     try {
-        $conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
+        $conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['basedatos'], $bd_config['usuario'], $bd_config['pass']);
     } catch (PDOException $e) {
         echo "Error:" . $e->getMessage();
     }
@@ -52,9 +63,9 @@ function traerReglas(String $var){
     return $resultado;
 }
 
-function traerDiagnostico(int $id_usuario){
+function traerDiagnostico(int $id_usuario, $bd_config){
     try {
-        $conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
+        $conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['basedatos'], $bd_config['usuario'], $bd_config['pass']);
     } catch (PDOException $e) {
         echo "Error:" . $e->getMessage();
     }
@@ -64,4 +75,5 @@ function traerDiagnostico(int $id_usuario){
     $resultado = $statement->fetchAll();
     return $resultado;
 }
+
 ?>

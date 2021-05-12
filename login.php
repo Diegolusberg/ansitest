@@ -1,4 +1,6 @@
 <?php session_start();
+include 'funciones.php';
+include 'admin/config.php';
 
 // Comprobamos si ya tiene una sesion
 # Si ya tiene una sesion redirigimos al contenido, para que no pueda acceder al formulario
@@ -16,11 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//$password = hash('sha512', $password);
 
 	// Nos conectamos a la base de datos
-	try {
-		$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-	} catch (PDOException $e) {
-		echo "Error:" . $e->getMessage();
-	}
+	$conexion = conexion($bd_config);
 
 	$statement = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = :usuario AND contrasena = :password');
 	$statement->execute(array(

@@ -1,14 +1,20 @@
 <?php session_start();
 include 'funciones.php';
+include 'admin/config.php';
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . RUTA);
+	//$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
+}
 
 
 // Comprobamos si ya tiene una sesion
 # Si ya tiene una sesion redirigimos al contenido, para que no pueda volver a registrar un usuario.
 
 
-$empresas= traerempresas();
+$empresas= traerempresas($bd_config);
 
-$datos= datosUsuarioTotal();
+$datos= datosUsuarioTotal($bd_config);
 
 
 // Comprobamos si ya han sido enviado los datos
@@ -42,11 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 
 		// Comprobamos que el usuario no exista ya.
-		try {
-			$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-		} catch (PDOException $e) {
-			echo "Error:" . $e->getMessage();
-		}
+		$conexion = conexion($bd_config);
 
 		$statement = $conexion->prepare('SELECT usuario FROM usuarios WHERE usuario = :usuario LIMIT 1');
 		$statement->execute(array(':usuario' => $usuario));

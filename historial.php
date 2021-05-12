@@ -1,15 +1,17 @@
-<?php include 'funciones.php';
-
-session_start();
-
-$datos = datosUsuario();
+<?php session_start();
+include 'funciones.php';
+include 'admin/config.php';
 
 
-try {
-	$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-} catch (PDOException $e) {
-	echo "Error:" . $e->getMessage();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . RUTA);
+	//$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
 }
+
+$datos = datosUsuario($bd_config);
+
+
+$conexion = conexion($bd_config);
 
 $statement = $conexion->prepare('SELECT * FROM diagnostico where id_usuario=:id');
 $statement->execute(array(':id'=> $datos[0]));

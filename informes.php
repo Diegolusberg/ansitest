@@ -1,7 +1,9 @@
 <?php
 include 'funciones.php';
+include 'admin/config.php';
 
-$datosempresas= traerempresas();
+
+$datosempresas= traerempresas($bd_config);
 $datosFuncionarios=null;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,11 +19,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errores = '<li>Por favor rellena todos los datos correctamente</li>';
 	} else {
 		// Comprobamos que el usuario no exista ya.
-		try {
-			$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
-		} catch (PDOException $e) {
-			echo "Error:" . $e->getMessage();
-		}
+		
+		$conexion = conexion($bd_config);
+		
 
 		$statement = $conexion->prepare('SELECT codigo FROM empresas WHERE id_empresa = :empresa');
 		$statement->execute(array(':empresa' => $empresa));
