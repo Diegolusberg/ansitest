@@ -8,7 +8,7 @@ font-weight: bold;
 }
 
 .pregunta {
-color: #7DA5E0;
+color: blue;
 }
 
 .respuestas {
@@ -30,4 +30,9 @@ select{
 	color:#fff;
 	background-color:blue;
 
+}
+div{
+	border-color: navy;
+   border-width: 2px;
+   border-style: solid;
 }

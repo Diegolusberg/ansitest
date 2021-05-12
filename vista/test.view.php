@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="css/test.css">
 
 
+<h1>Ansitest</h1>
 
-
+<?php if(empty($_POST['resp'])){?>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="test">
 
 <div class="pregresp">
@@ -159,13 +160,81 @@
           <input type="radio" name="resp[12]" value="4" /> Intensidad Máxima (Invalidante)<br />
           </div>
     </div>
+          
           <input type="submit" name="enviar" value="Enviar"/>
 
           <?php if(!empty($errores)): ?>
               <div class="error">
                   <ul>
-                      <?php echo $errores; ?>
+                  <script>alert("<?php echo $errores; ?>");</script>
+                      
                   </ul>
               </div>
           <?php endif; ?>
+          
 </form>
+<?php 
+
+}else{ 
+  
+  ?>
+<html>
+<LINK REL=StyleSheet HREF="css/resultadostest.css" TYPE="text/css" MEDIA=screen>
+<div class="btn-group" style="margin: 5%">
+ <?php if($diagnostico!=null){
+        
+        $indice=0;
+        //var_dump($diagnostico);
+        foreach($diagnostico as $valores){
+
+         list(,,$pregunta, $respuesta,) = $valores;//Trae valores y guarda en forma de string para hacer el explode,hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
+            
+          //$nombres= explode(";", $nombres);
+          $preguntas = explode(";", $pregunta);
+          $respuestas = explode(";", $respuesta);
+  
+        
+            $i=0;
+           while($i<12){
+               if($respuestas[$i]==0){
+               $respuestas[$i]="Ausente";
+               }elseif($respuestas[$i]==1){
+               $respuestas[$i]="Intensidad Ligera";
+               }elseif($respuestas[$i]==2){
+               $respuestas[$i]="Intensidad Media";
+               }elseif($respuestas[$i]==3){
+               $respuestas[$i]="Intensidad Elevada";
+               }elseif($respuestas[$i]==4){
+               $respuestas[$i]="Intensidad Máxima (Invalidante)";
+               }
+              echo "Pregunta: $preguntas[$i] Respuesta: $respuestas[$i] <br>";
+               $i++;
+              
+             //}
+             echo "<br>"; 
+           }
+           
+        }                                   
+ }
+
+ ?> 
+  <h2><?php echo "Su puntaje es de ".$suma." , se detecta posible ". $reglas[0]["resultado"]."<br>";?></h2>
+                    <div>
+                    <?php
+										echo '<span style="color:green; font-size:25px;">'."Puntuacion menor a 6, no se detectan niveles de ansiedad.<br>".'</span>';
+													
+										echo '<span style="color:#FFE400; font-size:25px;">'."Puntuacion de 6 a 15, se detecta ansiedad leve.<br>".'</span>';
+													
+										echo '<span style="color:red; font-size:25px;">'."Puntuacion mayor a 15, se detecta una ansiedad moderada/grave, se recomienda consulta Psicologica.<br>".'</span>';
+										?>
+                    </div>			 
+  <button style="margin: 10px" onclick="location.href='test.php'">Volver al test</button>
+  <button style="margin: 10px" onclick="location.href='principal.php'">Volver al menú principal</button>
+</div>
+</html>
+
+<?php 
+
+} 
+  
+  ?>

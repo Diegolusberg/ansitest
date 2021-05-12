@@ -17,7 +17,7 @@ $empresas= traerempresas();
 // Comprobamos si ya han sido enviado los datos
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Validamos que los datos hayan sido rellenados
-    $idusuario=$_POST['ci'];
+    $ci=$_POST['ci'];
     $nombres = $_POST['nombres'];
     $apellidos=$_POST['apellidos'];
     $edad=$_POST['edad'];
@@ -40,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$errores = '';
 
 	// Comprobamos que ninguno de los campos este vacio.
-	if (empty($idusuario) or empty($nombres) or empty($apellidos) or empty($edad) or empty($sexo) or empty($usuario) or empty($password) or empty($password2)) {
+	if (empty($ci) or empty($nombres) or empty($apellidos) or empty($edad) or empty($sexo) or empty($usuario) or empty($password) or empty($password2)) {
 		$errores = '<li>Por favor rellena todos los datos correctamente</li>';
 	} else {
 
@@ -76,10 +76,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Comprobamos si hay errores, sino entonces agregamos el usuario y redirigimos.
 	if ($errores == '') {
-		$statement = $conexion->prepare('INSERT INTO usuarios (id_usuario,nombres,apellidos,edad,sexo,usuario, contrasena,id_empresa) 
-        VALUES (:id_usuario, :nombres, :apellidos, :edad, :sexo, :usuario, :pass, :id_empresa)');
+		$statement = $conexion->prepare('INSERT INTO usuarios (ci,nombres,apellidos,edad,sexo,usuario, contrasena,id_empresa) 
+        VALUES (:ci, :nombres, :apellidos, :edad, :sexo, :usuario, :pass, :id_empresa)');
 		$statement->execute(array(
-                ':id_usuario'=>$idusuario,
+                ':ci'=>$ci,
                 ':nombres'=>$nombres,
                 ':apellidos'=>$apellidos,
                 ':edad'=>$edad,

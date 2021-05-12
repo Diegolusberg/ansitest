@@ -8,7 +8,7 @@ h1 {
 	text-align: center;
   }
   body {
-    background-image: url("https://srvsbniisphp-universitatpolit.netdna-ssl.com/cdn_propintegral/sites/default/files/styles/ancho680px/public/noticia/53365/field_foto/gettyimages-641989834.jpg");
+    background-image: url("https://stnhn.com/wp-content/uploads/2021/01/estresansiedad1.jpg");
     background-attachment: fixed ;
     background-size: cover;
   }
@@ -74,4 +74,9 @@ textarea{
 	/*resize: vertical | horizontal | none | both*/
 	resize:none;
 	display:block;
+}
+div{
+	font-size: large;
+	font-weight: bolder;
+	
 }

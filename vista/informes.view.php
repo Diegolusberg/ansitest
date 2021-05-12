@@ -36,6 +36,7 @@
 </form>
 
 
+</body>
 <?php if($_SERVER['REQUEST_METHOD'] == 'POST' AND $datosFuncionarios!=null){?>
 <h2>Historial de Usuarios</h2>
 <div class="historial">
@@ -48,14 +49,15 @@
 											//$contador=0;
 											foreach($datosFuncionarios as $valores){
 							
-												list($nombres,$pregunta, $respuesta) = $valores;//Trae valores y guarda en forma de string para hacer el explode,hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
+												list($nombres,$apellidos,$pregunta, $respuesta,$regla) = $valores;//Trae valores y guarda en forma de string para hacer el explode,hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
 
 												//$nombres= explode(";", $nombres);
 												$preguntas = explode(";", $pregunta);
 												$respuestas = explode(";", $respuesta);
 												
 
-												echo $nombres."<br>";
+												//echo $nombres." ".$apellidos."<br>";
+												echo '<span style="color:black; font-size:30px;">'.$nombres." ".$apellidos."<br>".'</span>';
 												//while($contador<$indice){ 
 													//$contador++;
 													$i=0;
@@ -75,7 +77,14 @@
 														 $i++;
 														
 													 }
-													 echo "<br>"; 
+													 if($regla==1){
+														echo '<span style="color:green; font-size:25px;">'."Diagnóstico: No se detecta ansiedad".'</span>';
+													 }elseif($regla==2){
+														echo '<span style="color:yellow; font-size:25px;">'."Diagnóstico: Ansiedad leve".'</span>';
+													 }else{
+														echo '<span style="color:red; font-size:25px;">'."Diagnóstico: Ansiedad moderada/Grave".'</span>';
+													 }
+													 echo "<br><br>"; 
 											   //}
 											   
 											}                                            
@@ -94,5 +103,4 @@
 </div>
 <?php } ?>
 
-</body>
 </html>

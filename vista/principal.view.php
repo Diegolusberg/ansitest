@@ -13,7 +13,7 @@
 </head>
 
 
-<LINK REL=StyleSheet HREF="css/principal.css" TYPE="text/css" MEDIA=screen> ...
+<LINK REL=StyleSheet HREF="css/principal.css" TYPE="text/css" MEDIA=screen>
 <div class="btn-group" style="margin: 5%">
   <button style="margin: 10px" onclick="location.href='editarusuario.php'">Editar Perfil</button>
   <button style="margin: 10px" onclick="location.href='historial.php'">Historial</button>

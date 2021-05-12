@@ -40,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($errores == '') {
 		
 
-			$statement = $conexion->prepare('SELECT u.nombres, d.id_preguntaV, d.id_respuestaV FROM diagnostico d
+			$statement = $conexion->prepare('SELECT u.nombres,u.apellidos, d.id_preguntaV, d.id_respuestaV, d.id_regla FROM diagnostico d
 				INNER JOIN usuarios u ON d.id_usuario=u.id_usuario
 				INNER JOIN empresas e ON e.id_empresa=u.id_empresa where e.id_empresa=:id');
 			$statement->execute(array(':id'=> $empresa));
