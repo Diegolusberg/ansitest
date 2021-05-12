@@ -25,6 +25,13 @@
                                                   echo "Pregunta: $preguntas[$i] Respuesta: $respuestas[$i] <br>";
                                                     $i++;
                                                 }
+                                                if($regla==1){
+                                                  echo '<span style="color:green; font-size:25px;">'."Diagnóstico: No se detecta ansiedad".'</span>';
+                                                 }elseif($regla==2){
+                                                  echo '<span style="color:yellow; font-size:25px;">'."Diagnóstico: Ansiedad leve".'</span>';
+                                                 }else{
+                                                  echo '<span style="color:red; font-size:25px;">'."Diagnóstico: Ansiedad moderada/Grave".'</span>';
+                                                 }
                                           }
 
 

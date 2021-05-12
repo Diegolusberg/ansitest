@@ -2,7 +2,7 @@
 include 'funciones.php';
 session_start();
 $datos = datosUsuario();
-
+$post=0;
 try {
 	$conexion = new PDO('mysql:host=localhost;dbname=ansitest', 'root', '');
 } catch (PDOException $e) {
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if(!empty($_POST['resp'])){
 			$respuestasV =$_POST['resp'];
 			$respuestasString = implode(";", $respuestasV);
-			
+		
 			$suma=0;
 			foreach($respuestasV as $valores){
 				$suma= $suma+$valores;
@@ -36,9 +36,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 			//echo $suma;
 
-
 			$errores = '';
-			if (count($respuestasV)<12) {
+			if (count($respuestasV) < 12) {
 				$errores = 'Por favor rellena todos los datos';
 			} else {
 					try {
@@ -58,9 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			// Comprobamos si hay errores, sino entonces agregamos el usuario y redirigimos.
 			if ($errores == '') {
-				//if($datos[0]) {
-				
-
+				$post=1;
 				//compara resultados
 				if($suma<6){
 					$var= "0-5";
@@ -72,13 +69,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				
 				$reglas= traerReglas($var);
 				//var_dump($reglas);
-				
 				$id_regla=$reglas[0]["id_regla"];
-				/*foreach($reglas as $regla){
-					foreach($regla as $condicion){
-					
-					}
-				}*/	
+
+
+		
 					$statement = $conexion->prepare('INSERT INTO diagnostico (id_usuario, id_preguntaV, id_respuestaV, id_regla) 
 					VALUES (:id_usuario, :id_preguntaV, :id_respuestaV, :id_regla) ON DUPLICATE KEY UPDATE id_preguntaV= :id_preguntaV, id_respuestaV= :id_respuestaV, id_regla= :id_regla');
 					$statement->execute(array(

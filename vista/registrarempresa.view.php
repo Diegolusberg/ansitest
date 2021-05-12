@@ -23,7 +23,7 @@
 	<input type ="text" name="ruc" id="ruc" placeholder="Ruc de la empresa"/>
 	
 	<label for="codigo">Codigo</label>
-	<input type ="text" name="codigo" id="codigo" placeholder="Codigo de acceso"/>
+	<input type ="password" name="codigo" id="codigo" placeholder="Codigo de acceso"/>
 
 	
 	<input type="submit" name="registrar" value="Registrar"/>
@@ -38,7 +38,7 @@
 			<?php if(!empty($registro)): ?>
 				<div class="registro">
 					<ul>
-						<?php echo $registro; ?>
+						<?php echo $registro;?>
 					</ul>
 				</div>
 			<?php endif; ?>

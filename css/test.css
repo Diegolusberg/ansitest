@@ -36,3 +36,16 @@ div{
    border-width: 2px;
    border-style: solid;
 }
+form input[type="submit"]{
+	width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:#fff;
+	background-color:blue;
+	width: 20%;
+	margin-right: auto;
+	margin-left: auto;
+}

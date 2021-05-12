@@ -3,7 +3,7 @@
 
 <h1>Ansitest</h1>
 
-<?php if(empty($_POST['resp'])){?>
+<?php if($post==0){?>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="test">
 
 <div class="pregresp">
@@ -234,7 +234,7 @@
 </html>
 
 <?php 
-
+$post=0;
 } 
   
   ?>

@@ -19,7 +19,7 @@ if($resultado!=null){
 	
 	foreach($resultado as $valores){
 
-		list(,,$pregunta, $respuesta) = $valores;//Trae valores y guarda en forma de string para hacer el explode
+		list(,,$pregunta, $respuesta,$regla) = $valores;//Trae valores y guarda en forma de string para hacer el explode
 									 			//hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
 		}                                            
 	$preguntas = explode(";", $pregunta);	

@@ -51,15 +51,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo "Error:" . $e->getMessage();
 		}
 
-		$statement = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1');
-		$statement->execute(array(':usuario' => $usuario));
+		$statement = $conexion->prepare('SELECT * FROM usuarios WHERE usuario = :usuario OR ci = :ci LIMIT 1');
+		$statement->execute(array(':usuario' => $usuario,
+								  ':ci'=>$ci));
 
 		// El metodo fetch nos va a devolver el resultado o false en caso de que no haya resultado.
 		$resultado = $statement->fetch();
 
 		// Si resultado es diferente a false entonces significa que ya existe el usuario.
 		if ($resultado != false) {
-			$errores .= '<li>El nombre de usuario ya existe</li>';
+			$errores .= '<li>El nombre de usuario o CI ya existe</li>';
 		}
 
 		// Hasheamos nuestra contraseña para protegerla un poco.

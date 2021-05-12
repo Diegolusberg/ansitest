@@ -51,9 +51,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ':ruc'=>$ruc,
                 ':codigo'=>$codigo
 			));
-        $registro='<li>La empresa se ha registrado con exito</li>';
+        $registro='La empresa se ha registrado con exito';
 		// Despues de registrar al usuario redirigimos para que inicie sesion.
-		//header('Location: login.php');
+		header('Location: login.php');
 	}
 
 
