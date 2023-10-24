@@ -1,5 +1,6 @@
 body {
-    background:url('https://media.gq.com.mx/photos/5c170f3de785033d8f5e3072/16:9/w_1366%2cc_limit/ansiedad.jpg');
+    background-image:url("../imagenes/login.jpg") ;
+    /*background-image: url("https://media.gq.com.mx/photos/5c170f3de785033d8f5e3072/16:9/w_1366%2cc_limit/ansiedad.jpg");*/
     margin:0px;
     font-family: 'Ubuntu', sans-serif;
       background-size: 100% 110%;

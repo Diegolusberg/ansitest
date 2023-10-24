@@ -1,10 +1,23 @@
-<?php 
+<?php session_start();
 include 'funciones.php';
 include 'admin/config.php';
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . RUTA);
+	//$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
+}else{
+    $sesion= traernivelacceso($bd_config);
+	if($sesion[0]==1){
+        header('Location: principal.php');
+
+    }
+}
+
+
+$id_usuario= datosUsuario($bd_config);
 
 // Comprobamos si ya han sido enviado los datos
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -41,13 +54,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Comprobamos si hay errores, sino entonces agregamos el usuario y redirigimos.
 	if ($errores == '') {
-		$statement = $conexion->prepare('INSERT INTO empresas (nombre,direccion,ruc,codigo) 
-        VALUES (:nombre, :direccion, :ruc, :codigo)');
+		$statement = $conexion->prepare('INSERT INTO empresas (nombre,direccion,ruc,codigo,usuario) 
+        VALUES (:nombre, :direccion, :ruc, :codigo, :usuario)');
 		$statement->execute(array(
                 ':nombre'=>$nombre,
                 ':direccion'=>$direccion,
                 ':ruc'=>$ruc,
-                ':codigo'=>$codigo
+                ':codigo'=>$codigo,
+				':usuario'=>$id_usuario[0]
 			));
         $registro='La empresa se ha registrado con exito';
 		// Despues de registrar al usuario redirigimos para que inicie sesion.

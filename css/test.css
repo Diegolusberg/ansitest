@@ -31,11 +31,11 @@ select{
 	background-color:blue;
 
 }
-div{
+/*div{
 	border-color: navy;
    border-width: 2px;
    border-style: solid;
-}
+}*/
 form input[type="submit"]{
 	width:100%;
 	padding:8px 16px;

@@ -8,8 +8,8 @@ h1 {
 	text-align: center;
   }
   body {
-	background-image: url("../imagenes/registrarusuario.jpg");
-    /*background-image: url("https://srvsbniisphp-universitatpolit.netdna-ssl.com/cdn_propintegral/sites/default/files/styles/ancho680px/public/noticia/53365/field_foto/gettyimages-641989834.jpg");*/
+    background-image:url("../imagenes/ansiedadmujer.jpg") ;
+    /*background-image: url("https://stnhn.com/wp-content/uploads/2021/01/estresansiedad1.jpg");*/
     background-attachment: fixed ;
     background-size: cover;
   }
@@ -28,29 +28,20 @@ form label{
 	display:inline-block;
 }
 form select{
-	width:100%;
+	width:70%;
 	padding:8px 16px;
 	margin-top:12px;
 	margin-block-end: 12PX;
 	border:1px solid white;
 	border-radius:5px;
-	display:block;
+	display:inline;
 	color:#fff;
 	background-color:#000;
 
 }
 
 form input[type="text"]{
-	width:180px;
-	padding:3px 10px;
-	border:1px solid #f6f6f6;
-	border-radius:3px;
-	background-color:#f6f6f6;
-	margin:8px 0;
-	display:inline-block;
-}
-form input[type="password"]{
-	width:180px;
+	width:70%;
 	padding:3px 10px;
 	border:1px solid #f6f6f6;
 	border-radius:3px;
@@ -69,7 +60,22 @@ form input[type="submit"]{
 	display:block;
 	color:#fff;
 	background-color:#000;
+
 } 
+
+.boton{
+	width:20%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:#fff;
+	background-color:blue;
+    cursor:pointer;
+	margin-left: auto;
+} 
+
 
 form input[type="submit"]:hover{
 	cursor:pointer;
@@ -85,4 +91,27 @@ textarea{
 	/*resize: vertical | horizontal | none | both*/
 	resize:none;
 	display:block;
+}
+div{
+	font-size: large;
+	
+	
+}
+.ocultar {
+    display: none;
+}
+.mostrar {
+    display: block;
+}
+
+
+.formulario{
+	width:500px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:#ccc;
+}
+.center{
+    justify-content: center;
 }

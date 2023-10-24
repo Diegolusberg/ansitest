@@ -41,8 +41,17 @@
     <option value="1" selected>Masculino</option>
     <option value="2">Femenino</option> <!-- Opción por defecto -->
   	</select>
+	
+
+	<label>Rol</label>
+	<select name="rol">
+    <option value="1" selected>Paciente</option>
+    <option value="2">Psicologo</option>
+  	</select>
+
 	<label>Empresa: </label>
     <select name="empresa">
+	<option value="1">Indefinida</option>
        <?php
         foreach ($empresas as $empresa) {
           echo '<option value='.$empresa['id_empresa'].'>'. $empresa['nombre']; }'</option>'
@@ -67,6 +76,7 @@
 					</ul>
 				</div>
 			<?php endif; ?>
+			Seleccione empresa Indefinida si usted tiene el rol Psicologo
 </form>
 
 </body>

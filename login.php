@@ -5,7 +5,12 @@ include 'admin/config.php';
 // Comprobamos si ya tiene una sesion
 # Si ya tiene una sesion redirigimos al contenido, para que no pueda acceder al formulario
 if (isset($_SESSION['usuario'])) {
+	$sesion= traernivelacceso($bd_config);
+	if($sesion[0]==1){
 	header('Location: principal.php');
+	}else{
+	header('Location: principalpsicologo.php');
+	}
 	//$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
 	die();
 }
@@ -29,7 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$resultado = $statement->fetch();
 	if ($resultado !== false) {
 		$_SESSION['usuario'] = $usuario;
+		if($resultado[8]==1){
 		header('Location: principal.php');
+		}else{
+		header('Location: principalpsicologo.php');
+		}
 	} else {
 		$errores = '<li>Datos incorrectos</li>';
 	}

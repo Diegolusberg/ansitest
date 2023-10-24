@@ -28,10 +28,10 @@
                       <!--<h6 class="no-access">No puede acceder a su cuenta?</h6>-->
                     </div>
           </form>
-                      <div class="centerdiv">
+                  <!--<div class="centerdiv">
                       <button class="button2" onclick="location.href='registrarempresa.php'">Registrar Empresa</button>
                       <button class="button2" onclick="location.href='informes.php'">Informes Empresas</button>
-                      </div>
+                      </div>-->
     </div>
 
 <!--<div class="error-page">

@@ -22,8 +22,8 @@ p {
 }
 
 body {
-    background-image: url("../imagenes/principal.png");
-    /*background-image: url("https://www.mediformplus.com/wp-content/uploads/2019/10/banner-Ansiedad.png");*/
+  background-image: url("../imagenes/principal.png");
+  /*background-image: url("https://www.mediformplus.com/wp-content/uploads/2019/10/banner-Ansiedad.png");*/
     background-attachment: fixed ;
     background-size: contain;
   }

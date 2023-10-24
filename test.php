@@ -1,10 +1,18 @@
 <?php session_start();
 include 'funciones.php';
 include 'admin/config.php';
+date_default_timezone_set("America/Asuncion");
+$fechaActual = date('Y-m-d');
 
 if (!isset($_SESSION['usuario'])) {
     header('Location: ' . RUTA);
 	//$_SESSION['usuario']=$row ["usuario"];//guarda el nombre de usuario
+}else{
+    $sesion= traernivelacceso($bd_config);
+	if($sesion[0]==2){
+        header('Location: principalpsicologo.php');
+
+    }
 }
 
 $datos = datosUsuario($bd_config);
@@ -54,9 +62,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 					//echo $preguntasString;
 					
 			}	
-
-			// Comprobamos si hay errores, sino entonces agregamos el usuario y redirigimos.
-			if ($errores == '') {
+			
+		
+			
+				if ($errores == '') {
 				$post=1;
 				//compara resultados
 				if($suma<6){
@@ -68,22 +77,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				}
 				
 				$reglas= traerReglas($var, $bd_config);
+
+
 				//var_dump($reglas);
 				$id_regla=$reglas[0]["id_regla"];
 
 
 		
-					$statement = $conexion->prepare('INSERT INTO diagnostico (id_usuario, id_preguntaV, id_respuestaV, id_regla) 
-					VALUES (:id_usuario, :id_preguntaV, :id_respuestaV, :id_regla) ON DUPLICATE KEY UPDATE id_preguntaV= :id_preguntaV, id_respuestaV= :id_respuestaV, id_regla= :id_regla');
+					$statement = $conexion->prepare('INSERT INTO diagnostico (id_usuario, id_preguntaV, id_respuestaV, id_regla, fecha, comentario) 
+					VALUES (:id_usuario, :id_preguntaV, :id_respuestaV, :id_regla, :fecha_actual, :comentario) ON DUPLICATE KEY UPDATE id_preguntaV= :id_preguntaV, id_respuestaV= :id_respuestaV, id_regla= :id_regla');
 					$statement->execute(array(
 							':id_usuario'=>$datos[0],
 							':id_preguntaV'=>$preguntasString,
 							':id_respuestaV'=>$respuestasString,
-							':id_regla'=>$id_regla
+							':id_regla'=>$id_regla,
+							':fecha_actual'=>$fechaActual,
+							':comentario'=>null
 						));
 					
 				//header('Location: resultadostest.php');
-						$diagnostico= traerDiagnostico($datos[0], $bd_config);
+						$diagnostico= traerUltimoDiagnostico($datos[0], $bd_config);
 			}
 	}else{
 		$errores = 'Debe completar para obtener resultados';

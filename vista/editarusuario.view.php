@@ -38,6 +38,18 @@
           echo '<option value='.$empresa['id_empresa'].'>'. $empresa['nombre']; }'</option>'
         ?>
     </select>
+
+	<label>Rol</label>
+	<select name="rol">
+    <option value="<?php echo $datos[6];?>" readonly/>
+	<?php if($datos[8]==1){
+		echo "Paciente";
+		}else{
+		echo "Psicologo";
+		}	
+		?>
+	</option>
+  	</select>
 	  
 	<label for="usuario">Usuario</label>
 	<input type ="text" name="usuario" id="usuario" placeholder="Usuario" value="<?php echo $datos[6];?>" readonly/>

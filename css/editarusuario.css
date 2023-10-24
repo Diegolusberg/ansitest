@@ -8,7 +8,8 @@ h1 {
 	text-align: center;
   }
   body {
-    background-image: url("https://srvsbniisphp-universitatpolit.netdna-ssl.com/cdn_propintegral/sites/default/files/styles/ancho680px/public/noticia/53365/field_foto/gettyimages-641989834.jpg");
+	background-image: url("../imagenes/registrarusuario.jpg");
+    /*background-image: url("https://srvsbniisphp-universitatpolit.netdna-ssl.com/cdn_propintegral/sites/default/files/styles/ancho680px/public/noticia/53365/field_foto/gettyimages-641989834.jpg");*/
     background-attachment: fixed ;
     background-size: contain;
   }

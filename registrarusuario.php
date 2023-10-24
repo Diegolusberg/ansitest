@@ -23,10 +23,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $apellidos=$_POST['apellidos'];
     $edad=$_POST['edad'];
     $sexo=$_POST['sexo'];
+	$rol=$_POST['rol'];
 	$usuario = filter_var(strtolower($_POST['usuario']), FILTER_SANITIZE_STRING);
 	$password = $_POST['password'];
 	$password2 = $_POST['password2'];
 	$id_empresa =$_POST['empresa'];
+
+	if($rol==2){
+	$id_empresa=1;//nos aseguramos que sea 0 y no posea empresa si es Psicologo
+	}
 
 // // Tambien podemos limpiar mediante las funciones
 // 	# El problema es que si lo hacemos de esta forma no estamos eliminando caracteres especiales, solo los transformamos.
@@ -74,14 +79,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Comprobamos si hay errores, sino entonces agregamos el usuario y redirigimos.
 	if ($errores == '') {
-		$statement = $conexion->prepare('INSERT INTO usuarios (ci,nombres,apellidos,edad,sexo,usuario, contrasena,id_empresa) 
-        VALUES (:ci, :nombres, :apellidos, :edad, :sexo, :usuario, :pass, :id_empresa)');
+		$statement = $conexion->prepare('INSERT INTO usuarios (ci,nombres,apellidos,edad,sexo,usuario, contrasena, nivel_acceso, id_empresa) 
+        VALUES (:ci, :nombres, :apellidos, :edad, :sexo, :usuario, :pass, :nivel_acceso, :id_empresa)');
 		$statement->execute(array(
                 ':ci'=>$ci,
                 ':nombres'=>$nombres,
                 ':apellidos'=>$apellidos,
                 ':edad'=>$edad,
                 ':sexo'=>$sexo,
+				':nivel_acceso'=>$rol,
 				':usuario' => $usuario,
 				':pass' => $password,
                 ':id_empresa'=>$id_empresa
@@ -98,3 +104,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 require 'vista/registrarusuario.view.php';
 
 ?>
+													<script type="text/javascript">   
+													
+													let cod;
+													function ShowSelected(){
+													  /* Para obtener el valor */
+													   cod = document.getElementById("x").value;
+													   document.getElementById("idempresa").innerHTML = cod;
+													  
+													 
+													  
+													  /* Para obtener el texto */
+													  var combo = document.getElementById("x");
+													  var selected = combo.options[combo.selectedIndex].text;
+													  document.getElementById("idempresa").innerText = selected;
+													 return cod;
+													  }
+													  function aparezca() {
+													var eldiv =document.getElementById("empresa");
+													eldiv.style.display="block";
+													
+													}
+													  
+													  </script>

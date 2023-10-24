@@ -28,3 +28,9 @@
         font-family: Arial;
         text-transform: uppercase;
       }
+      body {
+        background-image:url("../imagenes/ansiedadmujer.jpg") ;
+        /*background-image: url("https://stnhn.com/wp-content/uploads/2021/01/estresansiedad1.jpg");*/
+        background-attachment: fixed ;
+        background-size: cover;
+      }

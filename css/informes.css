@@ -8,7 +8,8 @@ h1 {
 	text-align: center;
   }
   body {
-    background-image: url("https://stnhn.com/wp-content/uploads/2021/01/estresansiedad1.jpg");
+	background-image:url("../imagenes/ansiedadmujer.jpg") ;
+    /*background-image: url("https://stnhn.com/wp-content/uploads/2021/01/estresansiedad1.jpg");*/
     background-attachment: fixed ;
     background-size: cover;
   }
@@ -79,4 +80,10 @@ div{
 	font-size: large;
 	font-weight: bolder;
 	
+}
+.ocultar {
+    display: none;
+}
+.mostrar {
+    display: block;
 }

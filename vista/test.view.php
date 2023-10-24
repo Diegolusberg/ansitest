@@ -2,9 +2,10 @@
 
 
 <h1>Ansitest</h1>
-<h3>Tenga en cuenta para cada pregunta estos 3 aspectos: su gravedad, su frecuencia de presentación y la incapacidad o disfunción que produce.</h3>
+
 
 <?php if($post==0){?>
+<h3>Tenga en cuenta para cada pregunta estos 3 aspectos: su gravedad, su frecuencia de presentación y la incapacidad o disfunción que produce.</h3>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="test">
 
 <div class="pregresp">
@@ -192,6 +193,7 @@
                                                 traerPreguntas(11,$preguntasV);
 
                                                 ?><br />
+    </div>
         <div class="respuestas">
           <input type="radio" name="resp[12]" value="0" /> Ausente<br />
           <input type="radio" name="resp[12]" value="1" /> Intensidad Ligera <br />
@@ -200,8 +202,9 @@
           <input type="radio" name="resp[12]" value="4" /> Intensidad Máxima (Invalidante)<br />
           </div>
     </div>
+  
           
-          <input type="submit" name="enviar" value="Enviar"/>
+    <input type="submit" name="enviar" value="Enviar"/>
 
           <?php if(!empty($errores)): ?>
               <div class="error">
@@ -211,6 +214,7 @@
                   </ul>
               </div>
           <?php endif; ?>
+         
           
 </form>
 <?php 
@@ -258,14 +262,14 @@
  }
 
  ?> 
-  <h2><?php echo "Su puntaje es de ".$suma." , Diagnóstico probable: ". $reglas[0]["resultado"]."<br>";?></h2>
+  <h2><?php echo "Diagnóstico probable: ". $reglas[0]["resultado"]."<br>";?></h2>
                     <div>
                     <?php
-										echo '<span style="color:green; font-size:25px;">'."Puntuacion menor a 6, no se detectan niveles de ansiedad.<br>".'</span>';
+									//	echo '<span style="color:green; font-size:25px;">'."Puntuacion menor a 6, no se detectan niveles de ansiedad.<br>".'</span>';
 													
-										echo '<span style="color:#FFE400; font-size:25px;">'."Puntuacion de 6 a 15, se detecta ansiedad leve.<br>".'</span>';
+									//	echo '<span style="color:#FFE400; font-size:25px;">'."Puntuacion de 6 a 15, se detecta ansiedad leve.<br>".'</span>';
 													
-										echo '<span style="color:red; font-size:25px;">'."Puntuacion mayor a 15, se detecta una ansiedad moderada/grave, se recomienda consulta Psicologica.<br>".'</span>';
+									//	echo '<span style="color:red; font-size:25px;">'."Puntuacion mayor a 15, se detecta una ansiedad moderada/grave, se recomienda consulta Psicologica.<br>".'</span>';
 										?>
                     </div>			 
   <button style="margin: 10px" onclick="location.href='test.php'">Volver al test</button>

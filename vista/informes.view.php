@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <html>
 <head>
 	<title>Informe</title>
@@ -47,27 +48,49 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' AND $datosFuncionarios!=null){
 ?>
 
 
-<h2>Historial de Usuarios</h2>
+<h2>Usuario</h2>
 <div class="historial">
-    <div class="pregunta"> <?php    
+    <div class="pregunta" ><?php    
                                     
 										if($datosFuncionarios!=null){
 											$indice=0;
+											//$ind= x($datosFuncionarios);
 											//$contador=0;
+										 
+												
+												
+												
+											
+										
+											
 											foreach($datosFuncionarios as $valores){
-							
-												list($nombres,$apellidos,$pregunta, $respuesta,$regla) = $valores;//Trae valores y guarda en forma de string para hacer el explode,hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
-
+											
+												
+												list($id_usuario, $nombres,$apellidos,$pregunta, $respuesta,$regla,$comentario) = $valores;//Trae valores y guarda en forma de string para hacer el explode,hacemos asi porque fetchAll trae arrays de array y resulta complicado manipular
+												
 												//$nombres= explode(";", $nombres);
 												$preguntas = explode(";", $pregunta);
 												$respuestas = explode(";", $respuesta);
 												
-
-												//echo $nombres." ".$apellidos."<br>";
-												echo '<span style="color:black; font-size:30px;">'.$nombres." ".$apellidos."<br>".'</span>';
-												//while($contador<$indice){ 
-													//$contador++;
+												
+															
+												?>
+												
+											
+												<span name="texto" style="color:black; font-size:30px;"><?php echo $nombres." ".$apellidos ?><br></span>
+												<!--<div id="detalles"  style="display:none"></div>-->
+												
+												
+												
+												 
+												
+											
+												<?php
+												
+												
+													
 													$i=0;
+													$x=0;
 													while($i<12){
 													   if($respuestas[$i]==0){
 														 $respuestas[$i]="Ausente";
@@ -80,23 +103,62 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' AND $datosFuncionarios!=null){
 													   }elseif($respuestas[$i]==4){
 														 $respuestas[$i]="Intensidad Máxima (Invalidante)";
 													   }
-													   echo "Pregunta: $preguntas[$i] Respuesta: $respuestas[$i] <br>";
+													  
+													 
+													  // echo "Pregunta: $preguntas[$i] Respuesta: $respuestas[$i] <br>";
+															
+
 														 $i++;
 														
-													 }
+													 
+													}
+													?>
+														
+													<?php
+													
+												
 													 if($regla==1){
-														echo '<span style="color:green; font-size:25px;">'."Diagnóstico: No se detecta ansiedad".'</span>';
+														$diagnostico= '<span style="color:green; font-size:25px;">'."Diagnóstico: No se detecta ansiedad".'</span>';
 													 }elseif($regla==2){
-														echo '<span style="color:yellow; font-size:25px;">'."Diagnóstico: Ansiedad leve".'</span>';
+														$diagnostico='<span style="color:yellow; font-size:25px;">'."Diagnóstico: Ansiedad leve".'</span>';
 													 }else{
-														echo '<span style="color:red; font-size:25px;">'."Diagnóstico: Ansiedad moderada/Grave".'</span>';
+														$diagnostico='<span style="color:red; font-size:25px;">'."Diagnóstico: Ansiedad moderada/Grave".'</span>';
 													 }
-													 echo "<br><br>"; 
-											   //}
-											   
-											}                                            
-										}
-                                                
+													 echo $diagnostico."<br>";
+													 if($comentario==null){
+														echo "Observaciones: Ninguna";
+													 }else{
+														echo "Observaciones: ".$comentario;
+													 }
+													 
+
+
+													?>
+
+													
+													<!--Código JavaScript para carga de datos sin recargar pagina-->
+													
+									
+													
+
+												
+												<!--<input type="button" value="Ver más" onclick="recargar()"/>
+														<a onclick="vermas()" href="#">Ver Detalles</a>-->
+
+												
+													
+													 <?php
+						
+											
+											 echo "<br><br>"; 
+											   //}	
+													
+											}    
+											
+										                                       
+									
+									}
+									
 											
 												
 												
@@ -105,6 +167,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' AND $datosFuncionarios!=null){
 
 
                             ?>
+							
+							<button style="margin: 10px" onclick="location.href='principalpsicologo.php'">Atrás</button>
+							<script type="text/javascript">
+													//Función recargar que cambia lo que hay en id="caja" por el contenido nuevo.
+													function recargar(){
+														document.getElementById("pregunta").innerHTML = $('#pregunta').hidde();
+														
+													}
+																									
+													function vermas() {
+													var eldiv =document.getElementById("detalles");
+													eldiv.style.display="block";
+													
+													}
+													
+							</script>
+										 	
                                                 
     </div>
 </div>
